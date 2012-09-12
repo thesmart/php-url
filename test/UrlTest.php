@@ -70,10 +70,28 @@ class UrlTest extends \PHPUnit_Framework_TestCase {
 		$url->setScheme('https://')->setHost('reddit.com')->setPort(2001)->setPath('')->setQuery(array())->setFragment(null);
 		$this->assertEquals('https://reddit.com:2001', (string)$url);
 		$url->setPort(443);
-		$this->assertEquals('https://reddit.com:443', (string)$url);
+		$this->assertEquals('https://reddit.com', (string)$url);
 		$url->setPort(null);
 		$this->assertEquals('https://reddit.com', (string)$url);
 		$url->setQuery(array('x'=>1,'y'=>2,'a'=>3));
 		$this->assertEquals('https://reddit.com?a=3&x=1&y=2', (string)$url);
+	}
+
+	public function testReadmeExamples() {
+		$url = new Url();
+		$url->setScheme('https://')->setHost('www.reddit.com')->setPath('/r/programming');
+		$this->assertEquals('https://www.reddit.com/r/programming', (string)$url);
+
+		$url = new Url('http://example.com?x=0&a=1&b=2');
+		$this->assertEquals(array('a' => 1, 'b' => 2, 'x' => 0), $url->getQuery());
+		$this->assertEquals('a=1&b=2&x=0', $url->getQueryStr());
+
+		$url = new Url('http://example.com');
+		$this->assertEquals('http://example.com', (string)$url);
+		$url = new Url('http://example.com/');
+		$this->assertEquals('http://example.com/', (string)$url);
+		$url = new Url('http://example.com');
+		$url->setPath('/');
+		$this->assertEquals('http://example.com/', (string)$url);
 	}
 }

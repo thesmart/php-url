@@ -185,6 +185,12 @@ class Url {
 			}
 		}
 
+		if ($this->port === 80 && $this->scheme === 'http') {
+			$this->port = null;
+		} else if ($this->port === 443 && $this->scheme === 'https') {
+			$this->port = null;
+		}
+
 		return $this;
 	}
 
