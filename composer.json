@@ -1,0 +1,24 @@
+{
+	"name": "thesmart/php-url",
+	"type": "library",
+	"description": "Create, manipulate, and output any URL easily. Convert between relative and absolute URLs. Map URLs to their canonical equivalent.",
+	"keywords": ["url","query","query string","canonical","relative path","absolute path"],
+	"homepage": "https://github.com/thesmart/php-url",
+	"license": "MIT",
+	"authors": [
+		{
+		"name": "John Smart",
+		"email": "smartj@gmail.com",
+		"homepage": "https://twitter.com/thesmart",
+		"role": "Developer"
+		}
+	],
+	"require": {
+		"php": ">=5.3.0"
+	},
+	"autoload": {
+		"psr-0": {
+			"url": "lib/"
+		}
+	}
+}
